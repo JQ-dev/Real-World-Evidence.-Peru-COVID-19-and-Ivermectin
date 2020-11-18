@@ -1,0 +1,56 @@
+
+.TdRojoCuerpoBold { font-size : 12px; font-family : Verdana, Arial, Helvetica, sans-serif; color :  #8A0404; ; font-weight: bold}
+.TdRojoCuerpoBoldPq { font-size : 10px; font-family : Verdana, Arial, Helvetica, sans-serif; color :  #8A0404; ; font-weight: bold}
+.TdRojoCuerpoBoldsPq { font-size : 8px; font-family : Verdana, Arial, Helvetica, sans-serif; color :  #8A0404; ; font-weight: bold}
+.TdRojoCuerpo { font-size : 11px; font-family : Verdana, Arial, Helvetica, sans-serif; color :  #8A0404; }
+
+
+.TdTituloAzulCuerpoBold { font-size : 18px; font-family : Verdana, Arial, Helvetica, sans-serif; font-weight : bold; color : #0086C6; }
+.TdTurquesaCuerpoBoldPq { font-size : 10px; font-family : Verdana, Arial, Helvetica, sans-serif; font-weight : bold; color : #0086C6; }
+
+.TdRojoCuerpoPq { font-size : 10px; font-family : Verdana, Arial, Helvetica, sans-serif; color :  #8A0404; }
+
+.TdRojoTituloGr { font-size : 14px; font-family : Verdana, Arial, Helvetica, sans-serif; color : #8A0404; ; font-weight: bold }
+.TdAzulTituloGr { font-size : 12px; font-family : Verdana; color : #000099; ; font-weight: bold }
+.TdBlancoCuerpoBold{
+	font-size : 14px;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-weight : bold;
+	color : FFFFFF;
+}
+.TdBlancoCuerpoBoldPq{
+	font-size :10px;
+	font-family : Verdana;
+	font-weight : bold;
+	color : FFFFFF;
+}
+.TdBlancoCuerpoBoldsPq{
+	font-size : 9px;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-weight : bold;
+	color : FFFFFF;
+}
+
+.TdBlancoCuerpoPq { font-size : 14px; font-family : "Arial"; color : #909090; }
+.TdAzulCuerpoPq{ font-size : 14px; font-family : "Arial"; color : #909090; }
+.TdNegroCuerpoBoldPq{ font-size : 10px; font-family : "Arial"; color : #000000; font-weight: bold ; }
+.TdNegroCuerpoBoldsPq{ font-size : 10px; font-family : "Arial"; color : #000000; font-weight: bold ; }
+.TdNegroCuerpoPq{ font-size : 12px; font-family : "Arial"; color : #000000; }
+.TdNegroCuerposPq{ font-size : 10px; font-family : "Arial"; color : #000000; }
+.TdNegroCuerpossPq{ font-size : 9px; font-family : "Arial"; color : #000000; }
+.TdVerdeCuerpoBold{
+	font-size : 22px;
+	font-family : Arial;
+	color : #588830;
+	font-weight:bold;
+}
+
+    
+.TdAzulCuerposPq { font-size : 14px; font-family : Verdana, Arial, Helvetica, sans-serif; color : #588830; }
+a:link { color:#0083E8 ;  text-decoration:underline; }
+a:visited {
+        color: #0083E8;  text-decoration:underline; }
+a:active {
+        color: #0083E8;  text-decoration:underline; }
+a:hover {
+        color: #333333; text-decoration:underline;  }

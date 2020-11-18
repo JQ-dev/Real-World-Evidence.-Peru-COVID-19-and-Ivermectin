@@ -1,0 +1,78 @@
+.docs-section {
+  font-size: 14px;
+  margin: 46px 0 0 0;
+}
+.docs-section .row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.docs-section .row > div {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.docs-section .page-header {
+  border: none;
+  padding-bottom: 0;
+}
+.docs-section .page-header h1 {
+  color: #222222;
+}
+@media screen and (max-width: 767px) {
+  .docs-section .page-header h1 {
+    font-size: 30px;
+  }
+}
+.docs-section .sub-title {
+  font-family: 'Heebo', sans-serif;
+  color: #333333;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 23px;
+  margin-top: 11.5px;
+  text-transform: uppercase;
+}
+.example-type h1,
+.example-type h2,
+.example-type h3,
+.example-type h4,
+.example-type h5,
+.example-type h6 {
+  margin: 0 0 23px 0;
+  font-weight: 100;
+}
+.example-buttons .btn,
+.example-inputs .btn,
+.example-buttons .form-control,
+.example-inputs .form-control {
+  box-shadow: none;
+  width: 100%;
+  margin-bottom: 23px;
+}
+.example-buttons ul,
+.example-inputs ul {
+  padding: 0;
+  list-style: none;
+}
+@media screen and (min-width: 768px) {
+  .example-buttons ul li,
+  .example-inputs ul li {
+    float: left;
+    width: 30%;
+    padding-right: 23px;
+  }
+}
+.example-button .btn {
+  margin: 0 15px 23px 5px;
+}
+@media screen and (min-width: 768px) {
+  .example-button .btn {
+    width: 30%;
+  }
+}
+.example-navigation .nav-tabs {
+  text-align: left;
+}
+.example-navigation .tab-content {
+  padding-top: 23px;
+}

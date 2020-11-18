@@ -1,0 +1,203 @@
+/* Default **/
+.wwp-elementor-breadcrumbs {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.wwp-elementor-breadcrumbs::after {
+    clear: both;
+    content: "";
+    display: table;
+}
+.wwp-elementor-breadcrumbs li::after {
+    margin: 0 1em;
+}
+.wwp-elementor-breadcrumbs li::after {
+    color: #959fa5;
+    display: inline-block;
+    margin: 0 0.6em;
+}
+.wwp-elementor-breadcrumbs li {
+    margin: 1.2em 0;
+}
+.wwp-elementor-breadcrumbs li {
+    display: inline-block;
+    float: left;
+    position: relative;
+    margin: 0.5em 0;
+}
+.wwp-elementor-breadcrumbs li:last-of-type::after {
+    display: none;
+}
+
+/* Triangle **/
+.wwp-elementor-breadcrumbs.triangle {
+    list-style: none;
+    overflow: hidden;
+}
+.wwp-elementor-breadcrumbs.triangle li {
+    float: left;
+    margin: 0 !important;
+}
+.wwp-elementor-breadcrumbs.triangle li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 0 10px 55px;
+    position: relative;
+    display: block;
+    float: left;
+}
+.wwp-elementor-breadcrumbs.triangle li a:after {
+    content: " ";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+    left: 100%;
+    z-index: 2;
+}
+.wwp-elementor-breadcrumbs.triangle li a:before {
+    content: " ";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-left: 30px solid white;
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+    margin-left: 1px;
+    left: 100%;
+    z-index: 1;
+}
+.wwp-elementor-breadcrumbs.triangle li:first-child a {
+    padding-left: 20px;
+}
+.wwp-elementor-breadcrumbs.triangle li:last-child {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    padding: 10px 20px 10px 55px;
+    color: white;
+    position: relative;
+    display: block;
+    float: left;
+}
+.wwp-elementor-breadcrumbs.triangle li:last-child a:after { border: 0; }
+
+/* Multi-Steps **/
+.wwp-elementor-breadcrumbs.multi-steps {
+    background-color: transparent;
+    padding: 0;
+}
+.wwp-elementor-breadcrumbs.multi-steps li {
+    position: relative;
+    margin: 0.4em 40px 0.4em 0;
+}
+.wwp-elementor-breadcrumbs.multi-steps li > *, .wwp-elementor-breadcrumbs.multi-steps li.current > * {
+    position: relative;
+}
+.wwp-elementor-breadcrumbs.multi-steps.text-center li::after {
+    width: 100%;
+    top: 50%;
+    left: 100%;
+    -webkit-transform: translateY(-50%) translateX(-1px);
+    -moz-transform: translateY(-50%) translateX(-1px);
+    -ms-transform: translateY(-50%) translateX(-1px);
+    -o-transform: translateY(-50%) translateX(-1px);
+    transform: translateY(-50%) translateX(-1px);
+}
+.wwp-elementor-breadcrumbs.multi-steps.text-center li > * {
+    z-index: 1;
+    padding: .6em 1em;
+    border-radius: .25em;
+}
+.wwp-elementor-breadcrumbs.multi-steps.text-center li.visited > *, .wwp-elementor-breadcrumbs.multi-steps.text-center li.current > * {
+    color: #ffffff;
+}
+.wwp-elementor-breadcrumbs.multi-steps.text-center li > * {
+    color: white;
+}
+.wwp-elementor-breadcrumbs.multi-steps li::after {
+    position: absolute;
+    content: '';
+    height: 4px;
+    margin: 0;
+}
+
+/* Dots **/
+.wwp-elementor-breadcrumbs.text-top li, .wwp-elementor-breadcrumbs.text-bottom li {
+    width: 80px;
+    text-align: center;
+}
+.wwp-elementor-breadcrumbs.text-top li::after, .wwp-elementor-breadcrumbs.text-bottom li::after {
+    position: absolute;
+    left: 50%;
+    width: calc(100% + 40px);
+}
+.wwp-elementor-breadcrumbs.text-top li > *::before, .wwp-elementor-breadcrumbs.text-bottom li > *::before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    right: auto;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+}
+.wwp-elementor-breadcrumbs.text-top li::after {
+    bottom: -13px;
+}
+.wwp-elementor-breadcrumbs.text-top li > * {
+    padding-bottom: 20px;
+}
+.wwp-elementor-breadcrumbs.text-top li > *::before {
+    bottom: 0;
+}
+.wwp-elementor-breadcrumbs.text-bottom li::after {
+    top: -13px;
+}
+.wwp-elementor-breadcrumbs.text-bottom li > * {
+    padding-top: 20px;
+}
+.wwp-elementor-breadcrumbs.text-bottom li > *::before {
+    top: 0;
+}
+
+/* Dots with counter **/
+.wwp-elementor-breadcrumbs.count li {
+    counter-increment: steps;
+}
+.wwp-elementor-breadcrumbs.count li > *::before {
+    content: counter(steps) " - ";
+}
+.wwp-elementor-breadcrumbs.text-top.count li > *::before,
+.wwp-elementor-breadcrumbs.text-bottom.count li > *::before {
+    content: counter(steps);
+    height: 26px;
+    width: 26px;
+    line-height: 26px;
+    color: #ffffff;
+}
+.wwp-elementor-breadcrumbs.text-top.count li::after {
+    bottom: -19px;
+}
+.wwp-elementor-breadcrumbs.text-top.count li > * {
+    padding-bottom: 34px;
+}
+.wwp-elementor-breadcrumbs.text-bottom.count li::after {
+    top: -19px;
+}
+.wwp-elementor-breadcrumbs.text-bottom.count li > * {
+    padding-top: 34px;
+}
