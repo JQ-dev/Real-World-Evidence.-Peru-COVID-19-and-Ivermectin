@@ -9,18 +9,17 @@ import pandas as pd
 import numpy as np
 
 
-C:\Users\admin\Downloads\Peru\Data Peru
 version = '99'
 path0 = 'C:/Users/admin/Downloads/Peru/Peru_deathsX_'+version+'.csv'
 
 file1 = 'C:/Users/admin/Downloads/Peru/Data Peru/SINADEF_DATOS_ABIERTOS_08112020.csv'
 
-file2 = 'C:/Users/admin/Downloads/Peru/Data Peru/'
-file3 = 'C:/Users/admin/Downloads/Peru/Data Peru/'
+file2 = 'C:/Users/admin/Downloads/Peru/Data Peru/positivos_covid.csv'
+file3 = 'C:/Users/admin/Downloads/Peru/Data Peru/fallecidos_covid.csv'
 
 #######################\
 # Read from the path - It takes long because it is a excel file
-fallecidosX = pd.read_excel(file1, sheet_name='Tabla_SINADEF',usecols='A:AE',skiprows=3)
+fallecidosX = pd.read_csv(file1,engine='python')
 
 del version, file1
 
@@ -175,14 +174,9 @@ del poblacion_d , poblacion_c
 ###############################################################################
 ###############################################################################
 
-try:
-    df_casesX = pd.read_csv('https://cloud.minsa.gob.pe/s/Y8w3wHsEdYQSZRp/download',sep=';',engine='python')
-except:
-    df_casesX = pd.read_csv('https://cloud.minsa.gob.pe/s/Y8w3wHsEdYQSZRp/download',sep=';',engine='python')
-        
+df_casesX = pd.read_csv(file2,sep=';',engine='python')
 
-# df_casesX.columns
-#cases = pd.read_csv('C:/Users/admin/Downloads/Peru/positivos_covid.csv',sep=',')
+
 
 # Reducing columns
 df_cases = df_casesX.loc[:,['DEPARTAMENTO','PROVINCIA','FECHA_RESULTADO','EDAD']].copy()
@@ -267,9 +261,9 @@ df_cases = pd.merge(df_cases, poblacion, how='left',on=['DEPARTAMENTO DOMICILIO'
 
 
 
-a = df_cases.loc[df_cases['CASES']==4020,'FECHA'].item()
-a = df_cases.loc[df_cases['FECHA']==a,:].copy()
-a = a.loc[a['DEPARTAMENTO DOMICILIO']=='LIMA',:].copy()
+#a = df_cases.loc[df_cases['CASES']==4020,'FECHA'].item()
+#a = df_cases.loc[df_cases['FECHA']==a,:].copy()
+#a = a.loc[a['DEPARTAMENTO DOMICILIO']=='LIMA',:].copy()
 #a = a.loc[a['PROVINCIA DOMICILIO']=='Todas',:].copy()
 
 
@@ -281,11 +275,9 @@ a = a.loc[a['DEPARTAMENTO DOMICILIO']=='LIMA',:].copy()
 ###############################################################################
 ###############################################################################
 
+df_deathsX = pd.read_csv(file3,sep=';',engine='python')
 
-
-df_deathsX = pd.read_csv('https://cloud.minsa.gob.pe/s/Md37cjXmjT9qYSa/download',sep=';',engine='python')
-
-
+list(df_deathsX.columns)
 # Reducing columns
 df_deaths = df_deathsX.loc[:,('DEPARTAMENTO','PROVINCIA','FECHA_FALLECIMIENTO','EDAD_DECLARADA')].copy()
 df_deaths.columns = ['DEPARTAMENTO','PROVINCIA','FECHA_RESULTADO','EDAD']

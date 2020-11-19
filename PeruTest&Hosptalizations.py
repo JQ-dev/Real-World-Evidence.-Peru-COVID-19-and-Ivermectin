@@ -6,7 +6,7 @@ Created on Thu Nov 12 11:27:27 2020
 """
 
 
-
+import pandas as pd
 
 
 ###############################################################################
@@ -147,4 +147,12 @@ Peru = pd.merge(Peru_casos,Peru_posit,on=['date','Dpto'])
 
 Peru = pd.merge(Peru,Peru_uci,on=['date'])
 Peru = pd.merge(Peru,Peru_hosp,on=['date'])
+
+
+del Peru_casos, Peru_hosp, Peru_posit, Peru_uci, cond, dates
+
+path3 = 'C:/Users/admin/Downloads/Peru/Peru_Sala_Situacional_99.csv'
+
+Peru.to_csv(path3,index=False)
+
 
