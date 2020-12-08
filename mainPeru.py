@@ -9,10 +9,10 @@ import pandas as pd
 import numpy as np
 
 
-version = '99'
+version = '100'
 path0 = 'C:/Users/admin/Downloads/Peru/Peru_deathsX_'+version+'.csv'
 
-file1 = 'C:/Users/admin/Downloads/Peru/Data Peru/SINADEF_DATOS_ABIERTOS_08112020.csv'
+file1 = 'C:/Users/admin/Downloads/Peru/Data Peru/SINADEF_DATOS_ABIERTOS_29112020.csv'
 
 file2 = 'C:/Users/admin/Downloads/Peru/Data Peru/positivos_covid.csv'
 file3 = 'C:/Users/admin/Downloads/Peru/Data Peru/fallecidos_covid.csv'
