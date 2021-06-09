@@ -9,10 +9,10 @@ import pandas as pd
 import numpy as np
 
 
-version = '100'
+version = '110'
 path0 = 'C:/Users/admin/Downloads/Peru/Peru_deathsX_'+version+'.csv'
 
-file1 = 'C:/Users/admin/Downloads/Peru/Data Peru/SINADEF_DATOS_ABIERTOS_29112020.csv'
+file1 = 'C:/Users/admin/Downloads/Peru/Data Peru/SINADEF_DATOS_ABIERTOS_19032021.csv'
 
 file2 = 'C:/Users/admin/Downloads/Peru/Data Peru/positivos_covid.csv'
 file3 = 'C:/Users/admin/Downloads/Peru/Data Peru/fallecidos_covid.csv'
@@ -32,8 +32,9 @@ fallecidos['PROVINCIA DOMICILIO'] = fallecidos['PROVINCIA DOMICILIO'] + a
 #sum(fallecidos.loc[:,'EDAD'] != 'SIN REGISTRO')
 #a = fallecidos[(fallecidos.loc[:,'EDAD'] == 'SIN REGISTRO')]
 
-
+#fallecidos.columns
 # Changing babies age from months to 0 ages
+fallecidos.loc[:,'TIEMPO EDAD'] = fallecidos.loc[:,'TIEMPO EDAD'].replace('AÃ‘OS','AÑOS')
 fallecidos.loc[ fallecidos['TIEMPO EDAD'] != 'AÑOS'  ,'EDAD'] = 0
 fallecidos = fallecidos.drop(['TIEMPO EDAD'],axis=1)
 
@@ -46,7 +47,7 @@ fallecidos = fallecidos[(fallecidos.loc[:,'EDAD'] != 'SIN REGISTRO')]
 fallecidos['EDAD'] = fallecidos['EDAD'].astype(float)
 fallecidos['EDAD'] = fallecidos['EDAD'].apply(lambda x : np.floor( x / 10 )*10 )
 fallecidos.loc[ fallecidos.loc[:,'EDAD'] >= 80  ,'EDAD'] = 80
-
+fallecidos['EDAD'].drop_duplicates()
 
 # Formatting date
 fallecidos['FECHA'] = pd.to_datetime(fallecidos['FECHA'])
@@ -373,8 +374,10 @@ Peru_norm = Peru_deaths_final[Peru_deaths_final['EDAD']=='99'].copy()
 Peru_deaths_final.to_csv(path0,index=False)
 
 
+
 del Peru_deaths_final, a, df_cases, df_casesX, df_deaths, df_deathsX
-del  fallecidosX, path0, poblacion
+del  fallecidosX, poblacion
+
 
 
 #################################################################################
@@ -388,7 +391,7 @@ cond =  Peru_norm['PROVINCIA DOMICILIO'].apply(lambda x : "Todas en Peru" not in
 Peru_norm = Peru_norm[cond]
 
 #deptos = Peru_norm['DEPARTAMENTO DOMICILIO'].drop_duplicates()
-deptos = ['UCAYALI','TUMBES','PIURA','MOQUEGUA','LORETO','LIMA','LA LIBERTAD','CUSCO','AREQUIPA']
+deptos = ['UCAYALI','TUMBES','PIURA','MOQUEGUA','LORETO','LIMA','LA LIBERTAD','CUSCO','AREQUIPA','AYACUCHO']
 cond =  Peru_norm['DEPARTAMENTO DOMICILIO'].apply(lambda x : x in deptos )
 Peru_norm = Peru_norm[cond]
 
@@ -396,13 +399,70 @@ Peru_norm = Peru_norm[cond]
 Peru_norm = Peru_norm.drop(['PROVINCIA DOMICILIO','EDAD'],axis=1)
 
 
+Peru_norm = Peru_norm[Peru_norm['FECHA']>="2020-01-01 00:00:00"]
 
-Peru_norm = Peru_norm.groupby('DEPARTAMENTO DOMICILIO','FECHA')
-
-
-
+Peru_norm = Peru_norm.groupby(['DEPARTAMENTO DOMICILIO','FECHA','Pobl']).sum().reset_index()
 
 
+Peru_norm.to_csv('C:/Users/admin/Downloads/Peru/Peru_basic_deaths.csv',index=False)
+
+
+
+###############################################################################
+###############################################################################
+# MOBILITY
+
+
+
+df = pd.read_csv(path0)
+
+mob = pd.read_csv('C:/Users/admin/Downloads/Global_Mobility_Report.csv')
+
+list(df.columns)
+list(mob.columns)
+mob['country_region'].drop_duplicates()
+
+
+mob = mob[mob['country_region']=='Peru']
+mob = mob[mob['sub_region_2'].isnull()]
+
+
+
+mob = mob.drop(['country_region_code', 'country_region','place_id',
+ 'sub_region_2', 'metro_area', 'iso_3166_2_code',
+ 'census_fips_code'],axis=1)
+
+mob.columns =   ['country', 'dates',
+ 'retail_and_recreation', 'grocery_and_pharmacy',
+ 'parks', 'transit_stations', 'workplaces', 'residential']  
+    
+mob['country'] = mob['country'].str.upper()
+mob['country'] = mob['country'].fillna('Todas en Peru')
+
+#c_mob = mob['country'].drop_duplicates()
+#c_df = df['country'].drop_duplicates()
+
+
+renaming = [['CALLAO REGION','CALLAO'],['METROPOLITAN MUNICIPALITY OF LIMA','LIMA']]
+
+
+
+for new_name in renaming:
+    print(new_name[0],new_name[1])
+    mob['country'] = mob['country'].replace(new_name[0],new_name[1])
+
+
+mob = mob.rename(columns={'dates':'FECHA','country':'DEPARTAMENTO DOMICILIO'})
+
+mob.to_csv('mov_Peru.csv')
+
+c_join = pd.merge(df, mob, how='left', on=['FECHA','DEPARTAMENTO DOMICILIO'])
+
+c_join.to_csv(path0,index=False)
+
+
+#del c_df, c_mob
+del c_join, df, mob, renaming, new_name
 
 
 
